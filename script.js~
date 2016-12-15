@@ -1,0 +1,9 @@
+addToList = function() {
+    list = document.getElementByID("thelist");
+    item = document.createElement("li");
+    item.innerHTML = "Potatoes";
+    list.appendChild(item);
+}
+
+button = document.getElementByID("b");
+button.addEventListener("click", addToList);
