@@ -22,6 +22,29 @@ function removeFromList(e) {
     //console.log(e);
 }
 
+// Global vars for fibonacci func
+// (Sorry if you dont like loose vars :p )
+var cur = 0;
+var prev = 0;
+
+function fibonacci(e) {
+    if cur = 0 {
+	cur = 1;
+    } else {
+	var store = cur;
+	cur = cur + prev;
+	prev = store;
+    }
+    list = document.getElementById("fiblist"); //MAKE THIS IN HTML
+    item = document.createElement("li");
+    item.innerHTML = cur;
+    list.appendChild(item);
+}
+
+// Enable new fib element on button click
+fibButton = document.getElementById("fib-button") // MAKE THIS IN HTML
+fibButton.addEventListener("click", fibonacci);
+
 // Enable list item adding on button click
 button = document.getElementById("b");
 button.addEventListener("click", addToList);
