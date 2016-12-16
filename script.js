@@ -30,6 +30,7 @@ button.addEventListener("click", addToList);
 listEls = document.getElementsByTagName("li");
 for (i = 0; i < listEls.length; i++) {
     listEls[i].addEventListener("click", removeFromList);
+    // MADDIE ADD LISTENERS HERE
 }
 
 // Note to self: functions in JavaScript need to be defined in the doc before
