@@ -2,59 +2,73 @@
 // Assignment JS1, SoftDev
 // TeamAwwYeah - Misha K & Maddie O
 
+
+var list = document.getElementsByTagName("li");
+var thelist = document.getElementById("thelist");
+var btn = document.getElementById("b");
+var fibobtn = document.getElementById("f");
+var fibolist = document.getElementById("fibolist");
+var fibonum = document.getElementsByClassName("fol")
+
 // Potatomaker
 // Adds a potato to the list, called by button click
 // Approach #1 for making functions
-addToList = function(e) {
-    list = document.getElementById("thelist");
-    item = document.createElement("li");
+var addToList = function() {
+    var item = document.createElement("li");
     item.innerHTML = "Potato";
+    item.addEventListener("mouseover", changeHeader);
+    item.addEventListener("mouseout", revertHeader);
     item.addEventListener("click", removeFromList);
-    list.appendChild(item);
-    //console.log(e);
-};
+    thelist.appendChild(item);
+    console.log(list.length);
+}
 
 // Potatodeleter
 // Removes the clicked-on element from the list
 // Approach #2 for making functions
-function removeFromList(e) {
+var removeFromList = function() {
     this.remove();
-    //console.log(e);
-}
+};
 
-// Global vars for fibonacci func
-// (Sorry if you dont like loose vars :p )
-var cur = 0;
-var prev = 0;
+var changeHeader = function() {
+    var heading = document.getElementById("h");
+    heading.innerHTML = this.innerHTML;
+};
 
-function fibonacci(e) {
-    if cur = 0 {
-	cur = 1;
-    } else {
-	var store = cur;
-	cur = cur + prev;
-	prev = store;
+var revertHeader = function() {
+    var heading = document.getElementById("h");
+    heading.innerHTML = "Hello World!";
+};
+
+
+
+
+var fibonacci = function(e) {
+    var first = 1;
+    var second = 1;
+    for (var i = 0; i < e; i++) {
+    var temp = second;
+    second = first + second;
+    first = temp;
     }
-    list = document.getElementById("fiblist"); //MAKE THIS IN HTML
-    item = document.createElement("li");
-    item.innerHTML = cur;
-    list.appendChild(item);
+    return first;
 }
 
 // Enable new fib element on button click
-fibButton = document.getElementById("fib-button") // MAKE THIS IN HTML
-fibButton.addEventListener("click", fibonacci);
-
-// Enable list item adding on button click
-button = document.getElementById("b");
-button.addEventListener("click", addToList);
-
-// Add listeners for remove on click to all existing list items
-listEls = document.getElementsByTagName("li");
-for (i = 0; i < listEls.length; i++) {
-    listEls[i].addEventListener("click", removeFromList);
-    // MADDIE ADD LISTENERS HERE
+var fiboadd = function() {
+    var newFibo = document.createElement("li");
+    newFibo.className = "fol";
+    newFibo.innerHTML = fibonacci(fibonum.length);
+    fibolist.appendChild(newFibo);
 }
 
-// Note to self: functions in JavaScript need to be defined in the doc before
-//  they're first used
+// Add listeners for remove on click to all existing list items
+for (var x = 0; x < list.length; x++) {
+    list[x].addEventListener("mouseover", changeHeader);
+    list[x].addEventListener("mouseout", revertHeader);
+    list[x].addEventListener("click", removeFromList);
+}
+
+// Enable list item adding on button click
+btn.addEventListener("click", addToList);
+fibobtn.addEventListener("click", fiboadd);
